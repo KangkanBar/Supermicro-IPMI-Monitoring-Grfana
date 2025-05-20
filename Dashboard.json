@@ -1,0 +1,1112 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 158,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aejnumye2oyrkf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "alias": "CPU 1",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /CPU[0-9]+ Temp/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "cpu1_temp"
+            }
+          ]
+        },
+        {
+          "alias": "CPU 2",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /CPU[0-9]+ Temp/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "cpu2_temp"
+            }
+          ]
+        }
+      ],
+      "title": "CPU Temperatures",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aejnumye2oyrkf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "semi-dark-green",
+                  "index": 0,
+                  "text": "OK"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 5,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "alias": "PSU 1",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /Vcpu[0-9]|12V|5VCC|3.3VCC|5VSB|3.3VSB/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "ps1_status"
+            },
+            {
+              "condition": "AND",
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            }
+          ]
+        },
+        {
+          "alias": "PSU 2",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /Vcpu[0-9]|12V|5VCC|3.3VCC|5VSB|3.3VSB/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "ps2_status"
+            }
+          ]
+        }
+      ],
+      "title": "System Status",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aejnumye2oyrkf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 9,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /PS[0-9]+ Status|Chassis Intru/ AND $timeFilter GROUP BY \"name\"",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "name::tag",
+              "operator": "=",
+              "value": "system_temp"
+            }
+          ]
+        }
+      ],
+      "title": "System Temperature ",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 20,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 9,
+      "libraryPanel": {
+        "name": "Supermicro SSD Status - All Servers",
+        "uid": "aemcl95roc6iof"
+      },
+      "title": "Supermicro SSD Status - All Servers"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aejnumye2oyrkf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "id": 2,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "alias": "FAN 1",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /^FAN[0-9]+$/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "fan1"
+            }
+          ]
+        },
+        {
+          "alias": "FAN 2",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /^FAN[0-9]+$/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "fan2"
+            }
+          ]
+        },
+        {
+          "alias": "FAN 3",
+          "bucket": "telegraf",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "ipmi_sensor",
+          "orderBy": [],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"ipmi_sensor\" WHERE \"name\" =~ /^FAN[0-9]+$/ AND $timeFilter GROUP BY time($__interval), \"name\" fill(null)",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=",
+              "value": "fan3"
+            }
+          ]
+        }
+      ],
+      "title": "Fan Speeds",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aejnumye2oyrkf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "Absent"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aejnumye2oyrkf"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "name::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "ipmi_sensor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "logs",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "server::tag",
+              "operator": "=~",
+              "value": "/^$servers$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$rams$/"
+            }
+          ]
+        }
+      ],
+      "title": "RAM Temperature  ",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*a1_temp.*",
+            "renamePattern": "A1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*b1_temp.*",
+            "renamePattern": "B1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*a2_temp.*",
+            "renamePattern": "A2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*b2_temp.*",
+            "renamePattern": "B2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*c1_temp.*",
+            "renamePattern": "C1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*c2_temp.*",
+            "renamePattern": "C2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*d1_temp.*",
+            "renamePattern": "D1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*d2_temp.*",
+            "renamePattern": "D2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*e1_temp.*",
+            "renamePattern": "E1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*e2_temp.*",
+            "renamePattern": "E2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*f2_temp.*",
+            "renamePattern": "F2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*f1_temp.*",
+            "renamePattern": "F1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*g1_temp.*",
+            "renamePattern": "G1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*g2_temp.*",
+            "renamePattern": "G2"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*h1_temp.*",
+            "renamePattern": "H1"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": ".*h2_temp.*",
+            "renamePattern": "H2"
+          }
+        }
+      ],
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "172.25.0.100"
+          ],
+          "value": [
+            "172.25.0.100"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "aejnumye2oyrkf"
+        },
+        "definition": "SHOW TAG VALUES WITH KEY = \"server\"",
+        "hide": 0,
+        "includeAll": false,
+        "label": "All IPMI",
+        "multi": true,
+        "name": "servers",
+        "options": [],
+        "query": {
+          "query": "SHOW TAG VALUES WITH KEY = \"server\"",
+          "refId": "InfluxVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "p1-dimma1_temp"
+          ],
+          "value": [
+            "p1-dimma1_temp"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "aejnumye2oyrkf"
+        },
+        "definition": "SHOW TAG VALUES FROM \"ipmi_sensor\" WITH KEY = \"name\"\nWHERE \"name\" =~ /.*dimm.*_temp$/ AND \"server\" =~ /^$servers$/",
+        "hide": 0,
+        "includeAll": true,
+        "label": "RAMS",
+        "multi": true,
+        "name": "rams",
+        "options": [],
+        "query": {
+          "query": "SHOW TAG VALUES FROM \"ipmi_sensor\" WITH KEY = \"name\"\nWHERE \"name\" =~ /.*dimm.*_temp$/ AND \"server\" =~ /^$servers$/",
+          "refId": "InfluxVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "drive_fault"
+          ],
+          "value": [
+            "drive_fault"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "aejnumye2oyrkf"
+        },
+        "definition": "SHOW TAG VALUES FROM \"ipmi_sensor\"\nWITH KEY = \"status_desc\"\nWHERE \"name\" = 'hdd_status'\nORDER BY time DESC\nLIMIT 10",
+        "hide": 2,
+        "includeAll": false,
+        "label": "ssd",
+        "multi": true,
+        "name": "SSD",
+        "options": [],
+        "query": {
+          "query": "SHOW TAG VALUES FROM \"ipmi_sensor\"\nWITH KEY = \"status_desc\"\nWHERE \"name\" = 'hdd_status'\nORDER BY time DESC\nLIMIT 10",
+          "refId": "InfluxVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Supermicro Server IPMI Monitoring",
+  "uid": "femfrzx356o00b",
+  "version": 3,
+  "weekStart": ""
+}
