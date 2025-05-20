@@ -1,5 +1,5 @@
 # Supermicro-IPMI-Monitoring-Grfana
-Templated dashboard for telegraf &amp; influxdb.
+Templated dashboard for telegraf & influxdb.
 The dashboard can monitor SSD status rams, cpus, system tempareture, psus status etc.
 change the hdd.sh and ipmiserver.conf ipmi ips, their username and password,db name and db password.
 give permission to .sh file > chmod +x name.sh
