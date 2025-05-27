@@ -5,9 +5,9 @@ Change the hdd.sh and ipmiserver.conf ipmi ips, their username and password,db n
 Set the hdd.sh path in ipmiserver.conf under [[inputs.exec]]
 Give permission to .sh file > chmod +x name.sh
 
-list #to chek server measuremnets use below commands 
+ #to chek server measuremnets use below commands 
 
-ipmitool -I lan -H 192.168.0.27 -U Username -P 'Password' sdr 
+ipmitool -I lan -H 192.168.0.27 -U Username -P 'Password' sdr list
 
 sudo -u telegraf /etc/path/disk.sh
 
