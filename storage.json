@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 160,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 22,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "libraryPanel": {
+        "name": "Supermicro Disk Status - All Servers",
+        "uid": "aemcl95roc6iof"
+      },
+      "title": "Supermicro Disk Status"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "ALL Supermicro DISK",
+  "uid": "aemtymszc3doge",
+  "version": 4,
+  "weekStart": ""
+}
